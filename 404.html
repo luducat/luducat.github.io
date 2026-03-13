@@ -62,6 +62,29 @@
     .skip a:hover {
       color: #33bdaa;
     }
+         .download-btn {
+        display: inline-flex;                                                                                                     
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 1.6rem;
+        padding: 0.7rem 1.5rem;
+        background: #33bdaa;
+        color: #131d2b;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        transition: background 0.2s;
+      }
+      .download-btn:hover {
+        background: #3fccb9;
+      }
+      .download-btn svg {
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+      }
   </style>
   <script>
     /* ── i18n ── add new languages here ── */
@@ -102,7 +125,7 @@
       return "en";
     }
 
-    var seconds = 2;
+    var seconds = 5;
     function updateCountdown() {
       var el = document.getElementById('countdown');
       if (el) el.textContent = seconds;
@@ -168,6 +191,13 @@
     </svg>
     <h1 class="title">luducat</h1>
     <p class="blurb" id="blurb">Multi-store game catalog browser. No accounts, no telemetry, works offline. Your library, your rules.</p>
+    <a class="download-btn" id="download-btn" href="https://github.com/luducat/luducat/releases/latest">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" 
+  stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3v13M5 14l7 7 7-7"/><line x1="3" y1="21" x2="21" y2="21"/>
+        </svg>
+        Download on GitHub
+      </a>
     <p class="redirect" id="redirect">Redirecting to <a href="https://github.com/luducat/luducat">GitHub</a> in <span id="countdown">2</span>s</p>
     <span class="skip"><a id="skip-link" href="https://github.com/luducat/luducat">skip</a></span>
   </div>
