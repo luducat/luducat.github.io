@@ -27,7 +27,29 @@
       font-size: 0.9rem;
       letter-spacing: 0.03em;
     }
+    .redirect a {
+      color: #33bdaa;
+      text-decoration: none;
+    }
+    .redirect a:hover {
+      text-decoration: underline;
+    }
   </style>
+  <script>
+    var seconds = 8;
+    var timer;
+    function updateCountdown() {
+      var el = document.getElementById('countdown');
+      if (el) el.textContent = seconds;
+      if (seconds <= 0) {
+        window.location.href = 'https://github.com/luducat/luducat';
+        return;
+      }
+      seconds--;
+      timer = setTimeout(updateCountdown, 1000);
+    }
+    window.onload = function() { updateCountdown(); };
+  </script>
 </head>
 <body>
   <div class="wrap">
@@ -72,7 +94,7 @@
         </g>
       </g>
     </svg>
-    <p class="redirect">Something is coming soon ...</p>
+    <p class="redirect">Redirecting to <a href="https://github.com/luducat/luducat">GitHub</a> in <span id="countdown">8</span>s</p>
   </div>
 </body>
 </html>
