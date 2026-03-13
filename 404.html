@@ -18,11 +18,26 @@
       text-align: center;
     }
     .wrap svg {
-      width: 480px;
-      height: 480px;
+      width: 360px;
+      height: 360px;
+    }
+    .title {
+      margin: 0.6rem 0 0;
+      color: #dde1e1;
+      font-size: 2.4rem;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+    }
+    .blurb {
+      margin: 0.8rem auto 0;
+      max-width: 480px;
+      color: #8fa8a3;
+      font-size: 1.05rem;
+      line-height: 1.5;
+      letter-spacing: 0.02em;
     }
     .redirect {
-      margin-top: 1.2rem;
+      margin-top: 1.6rem;
       color: #5a9a90;
       font-size: 0.9rem;
       letter-spacing: 0.03em;
@@ -34,9 +49,22 @@
     .redirect a:hover {
       text-decoration: underline;
     }
+    .skip {
+      display: block;
+      margin-top: 0.4rem;
+    }
+    .skip a {
+      color: #5a9a90;
+      text-decoration: none;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+    .skip a:hover {
+      color: #33bdaa;
+    }
   </style>
   <script>
-    var seconds = 8;
+    var seconds = 10;
     var timer;
     function updateCountdown() {
       var el = document.getElementById('countdown');
@@ -94,7 +122,10 @@
         </g>
       </g>
     </svg>
-    <p class="redirect">Redirecting to <a href="https://github.com/luducat/luducat">GitHub</a> in <span id="countdown">8</span>s</p>
+    <h1 class="title">luducat</h1>
+    <p class="blurb">Multi-store game catalog browser. No accounts, no telemetry, works offline. Your library, your rules.</p>
+    <p class="redirect">Redirecting to <a href="https://github.com/luducat/luducat">GitHub</a> in <span id="countdown">10</span>s</p>
+    <span class="skip"><a href="https://github.com/luducat/luducat">skip</a></span>
   </div>
 </body>
 </html>
