@@ -64,8 +64,45 @@
     }
   </style>
   <script>
+    /* ── i18n ── add new languages here ── */
+    var L = {
+      en: {
+        blurb: "Multi-store game catalog browser. No accounts, no telemetry, works offline. Your library, your rules.",
+        redirect: 'Redirecting to <a href="https://github.com/luducat/luducat">GitHub</a> in <span id="countdown">10</span>s',
+        skip: "skip"
+      },
+      de: {
+        blurb: "Multi-Store-Spielekatalog. Keine Konten, keine Telemetrie, funktioniert offline. Deine Bibliothek, deine Regeln.",
+        redirect: 'Weiterleitung zu <a href="https://github.com/luducat/luducat">GitHub</a> in <span id="countdown">10</span>s',
+        skip: "weiter"
+      },
+      fr: {
+        blurb: "Catalogue de jeux multi-boutiques. Pas de compte, pas de t\u00e9l\u00e9m\u00e9trie, fonctionne hors ligne. Votre biblioth\u00e8que, vos r\u00e8gles.",
+        redirect: 'Redirection vers <a href="https://github.com/luducat/luducat">GitHub</a> dans <span id="countdown">10</span>s',
+        skip: "passer"
+      },
+      es: {
+        blurb: "Cat\u00e1logo de juegos multi-tienda. Sin cuentas, sin telemetr\u00eda, funciona sin conexi\u00f3n. Tu biblioteca, tus reglas.",
+        redirect: 'Redirigiendo a <a href="https://github.com/luducat/luducat">GitHub</a> en <span id="countdown">10</span>s',
+        skip: "saltar"
+      },
+      it: {
+        blurb: "Catalogo giochi multi-store. Nessun account, nessuna telemetria, funziona offline. La tua libreria, le tue regole.",
+        redirect: 'Reindirizzamento a <a href="https://github.com/luducat/luducat">GitHub</a> tra <span id="countdown">10</span>s',
+        skip: "salta"
+      }
+    };
+
+    function detectLang() {
+      var langs = navigator.languages || [navigator.language || "en"];
+      for (var i = 0; i < langs.length; i++) {
+        var code = langs[i].split("-")[0].toLowerCase();
+        if (L[code]) return code;
+      }
+      return "en";
+    }
+
     var seconds = 10;
-    var timer;
     function updateCountdown() {
       var el = document.getElementById('countdown');
       if (el) el.textContent = seconds;
@@ -74,9 +111,16 @@
         return;
       }
       seconds--;
-      timer = setTimeout(updateCountdown, 1000);
+      setTimeout(updateCountdown, 1000);
     }
-    window.onload = function() { updateCountdown(); };
+
+    window.onload = function() {
+      var t = L[detectLang()];
+      document.getElementById('blurb').innerHTML = t.blurb;
+      document.getElementById('redirect').innerHTML = t.redirect;
+      document.getElementById('skip-link').textContent = t.skip;
+      updateCountdown();
+    };
   </script>
 </head>
 <body>
@@ -123,9 +167,9 @@
       </g>
     </svg>
     <h1 class="title">luducat</h1>
-    <p class="blurb">Multi-store game catalog browser. No accounts, no telemetry, works offline. Your library, your rules.</p>
-    <p class="redirect">Redirecting to <a href="https://github.com/luducat/luducat">GitHub</a> in <span id="countdown">10</span>s</p>
-    <span class="skip"><a href="https://github.com/luducat/luducat">skip</a></span>
+    <p class="blurb" id="blurb">Multi-store game catalog browser. No accounts, no telemetry, works offline. Your library, your rules.</p>
+    <p class="redirect" id="redirect">Redirecting to <a href="https://github.com/luducat/luducat">GitHub</a> in <span id="countdown">10</span>s</p>
+    <span class="skip"><a id="skip-link" href="https://github.com/luducat/luducat">skip</a></span>
   </div>
 </body>
 </html>
